@@ -63,6 +63,7 @@ module.exports = {
   ],
 }
 ```
+<br></details>
 
 <details>
 <summary>esbuild</summary><br>
@@ -133,7 +134,7 @@ Components({
       "GradientMonochromeButton",
       "Button as FButton", // import as `FButton`
     ],
-    defaultImport: false, // telling `unplugin-svelte-components` to not import the default export
+    defaultImport: false, // telling `unplugin-svelte-components` to import any component as non-default export
   },
 ],,
 })
