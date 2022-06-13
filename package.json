@@ -89,6 +89,7 @@
 		"eslint-config-prettier": "^8.5.0",
 		"esno": "^0.16.3",
 		"lint-staged": "^13.0.1",
+		"pathe": "^0.3.0",
 		"prettier": "^2.6.2",
 		"rollup": "^2.75.6",
 		"simple-git-hooks": "^2.8.0",
