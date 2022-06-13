@@ -21,6 +21,7 @@ importers:
       local-pkg: ^0.4.1
       magic-string: ^0.26.2
       minimatch: ^5.1.0
+      pathe: ^0.3.0
       prettier: ^2.6.2
       resolve: ^1.22.0
       rollup: ^2.75.6
@@ -52,6 +53,7 @@ importers:
       eslint-config-prettier: 8.5.0_eslint@8.17.0
       esno: 0.16.3
       lint-staged: 13.0.1
+      pathe: 0.3.0
       prettier: 2.6.2
       rollup: 2.75.6
       simple-git-hooks: 2.8.0

@@ -1,0 +1,56 @@
+// Vitest Snapshot v1
+
+exports[`search > should with namespace & collapse 1`] = `
+[
+  {
+    "as": "Button",
+    "defaultImport": true,
+    "from": "src/components/button.svelte",
+  },
+  {
+    "as": "Checkbox",
+    "defaultImport": true,
+    "from": "src/components/checkbox.svelte",
+  },
+  {
+    "as": "FormCheckbox",
+    "defaultImport": true,
+    "from": "src/components/form/checkbox.svelte",
+  },
+]
+`;
+
+exports[`search > should with namespace 1`] = `
+[
+  {
+    "as": "Button",
+    "defaultImport": true,
+    "from": "src/components/button.svelte",
+  },
+  {
+    "as": "Checkbox",
+    "defaultImport": true,
+    "from": "src/components/checkbox.svelte",
+  },
+  {
+    "as": "FormCheckbox",
+    "defaultImport": true,
+    "from": "src/components/form/checkbox.svelte",
+  },
+]
+`;
+
+exports[`search > should work 1`] = `
+[
+  {
+    "as": "Button",
+    "defaultImport": true,
+    "from": "src/components/button.svelte",
+  },
+  {
+    "as": "Checkbox",
+    "defaultImport": true,
+    "from": "src/components/checkbox.svelte",
+  },
+]
+`;
