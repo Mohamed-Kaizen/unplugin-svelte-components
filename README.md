@@ -118,7 +118,7 @@ Once the setup is done, a `components.d.ts` will be generated and updates automa
 
 > **Make sure you also add `components.d.ts` to your `tsconfig.json` under `includes`.**
 
-## Types for global registered components
+## Registered third party components
 
 It's cool to have your own components have been import it, but sometime you want to import third party components.
 
@@ -140,8 +140,16 @@ Components({
 })
 ```
 
-So the `GradientMonochromeButton` and `FButton` will be presented in `components.d.ts`.
+So the `GradientMonochromeButton` and `FButton` will be available to use.
 
+## Disabling
+
+In some cases, you may want to disable the auto-import in your page, `unplugin-svelte-components` provides a way to do that by just adding `<!-- unplugin-svelte-components disabled -->` in your **.svelte** file
+
+```html
+<!-- unplugin-svelte-components disabled -->
+<HelloWorld msg="Hello Svelte" />
+```
 
 ## Configuration
 
