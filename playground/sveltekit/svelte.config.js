@@ -21,6 +21,16 @@ const config = {
 				Components({
 					dirs: ["./src/lib"],
 					dts: "./src/components.d.ts",
+					external: [
+						{
+						  from: "agnostic-svelte", // import from third party
+						  names: [ // import these components
+						  "Button as AButton", // import as `AButton`
+						  "Alert"
+						],
+						  defaultImport: false, // telling `unplugin-svelte-components` to import any component as non-default export
+						},
+					  ],
 
 				}),
 			],

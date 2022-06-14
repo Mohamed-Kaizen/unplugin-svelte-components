@@ -128,19 +128,19 @@ Thus `unplugin-svelte-components` provided a way to import these components.
 Components({
   dts: true,
   external: [
-  {
-    from: "flowbite-svelte", // import from third party
-    names: [ // import these components
-      "GradientMonochromeButton",
-      "Button as FButton", // import as `FButton`
-    ],
-    defaultImport: false, // telling `unplugin-svelte-components` to import any component as non-default export
-  },
-],,
+    {
+      from: "agnostic-svelte", // import from third party
+      names: [ // import these components
+        "Alert",
+        "Button as AButton", // import as `AButton`
+      ],
+      defaultImport: false, // telling `unplugin-svelte-components` to import any component as non-default export
+    },
+  ],
 })
 ```
 
-So the `GradientMonochromeButton` and `FButton` will be available to use.
+So the `Alert` and `AButton` will be available to use.
 
 ## Disabling
 
