@@ -10,7 +10,7 @@ import type { Options } from "../types"
 
 export default createUnplugin<Options>((options = {}) => {
 	const filter = createFilter(
-		options.include || [/\.svelte$/, /\.svelte\?svelte/],
+		options.include || [/\.svelte$/],
 		options.exclude || [
 			/[\\/]node_modules[\\/]/,
 			/[\\/]\.git[\\/]/,
@@ -28,8 +28,18 @@ export default createUnplugin<Options>((options = {}) => {
 		},
 
 		async transform(code: string, id: string) {
+			// return code
 			if (!shouldTransform(code)) return null
 			const result = await ctx.transform(code, id)
+			console.log("=======================start====================")
+
+			console.log(result)
+			console.log("=======================end====================")
+
+			console.log("=======================start code====================")
+			console.log(code)
+			console.log("=======================end code====================")
+
 			ctx.generateDeclaration()
 			return result
 		},
