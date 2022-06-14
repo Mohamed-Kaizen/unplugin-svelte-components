@@ -21,6 +21,7 @@ import type {
 	ResolvedOptions,
 	Transformer,
 } from "../types"
+import { PreprocessorGroup } from "svelte/types/compiler/preprocess"
 
 export class Context {
 	options: ResolvedOptions
@@ -33,7 +34,10 @@ export class Context {
 	private _server: ViteDevServer | undefined
 
 	root = process.cwd()
+
 	sourcemap: string | boolean = true
+
+	preprocess: PreprocessorGroup | [] = []
 
 	constructor(private rawOptions: Options) {
 		this.options = resolveOptions(rawOptions, this.root)

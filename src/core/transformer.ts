@@ -1,6 +1,6 @@
 import { walk } from "estree-walker"
 import MagicString from "magic-string"
-import { parse } from "svelte/compiler"
+import { parse, preprocess } from "svelte/compiler"
 
 import { stringifyComponentImport } from "./utils"
 
@@ -17,7 +17,7 @@ export default function transformer(ctx: Context): Transformer {
 
 		const s = new MagicString(code)
 
-		await transformComponent(code, s, ctx, sfcPath)
+		await transformComponent(code, s, ctx, sfcPath, id)
 
 		const result: TransformResult = { code: s.toString() }
 
@@ -63,8 +63,13 @@ async function transformComponent(
 	code: string,
 	s: MagicString,
 	ctx: Context,
-	sfcPath: string
+	sfcPath: string,
+	filename: string
 ) {
+	if (ctx.preprocess) {
+		const processed = await preprocess(code, ctx.preprocess, { filename })
+		code = processed.code
+	}
 	const ast = parse(code)
 
 	const results = resolveSvelte(ast)
@@ -86,7 +91,7 @@ async function transformComponent(
 	if (ast.instance) {
 		const start = ast.instance.start
 
-		const index = start + (code.slice(start).indexOf(">") + 1)
+		const index = start + (code.slice(start).indexOf(">") + 2)
 
 		const oc = s.toString()
 

@@ -1,10 +1,12 @@
 import { createFilter } from "@rollup/pluginutils"
 import chokidar from "chokidar"
+import path from "path"
 import { createUnplugin } from "unplugin"
 
 import { Context } from "./context"
 import { shouldTransform } from "./utils"
 
+import type { PreprocessorGroup } from "svelte/types/compiler/preprocess"
 import type { ResolvedConfig, ViteDevServer } from "vite"
 import type { Options } from "../types"
 
@@ -28,23 +30,22 @@ export default createUnplugin<Options>((options = {}) => {
 		},
 
 		async transform(code: string, id: string) {
-			// return code
 			if (!shouldTransform(code)) return null
 			const result = await ctx.transform(code, id)
-			console.log("=======================start====================")
-
-			console.log(result)
-			console.log("=======================end====================")
-
-			console.log("=======================start code====================")
-			console.log(code)
-			console.log("=======================end code====================")
-
 			ctx.generateDeclaration()
 			return result
 		},
 		vite: {
-			configResolved(config: ResolvedConfig) {
+			async configResolved(config: ResolvedConfig) {
+				const configFile = path.join(config.root, "./svelte.config.js")
+
+				const pkg = await import(configFile)
+
+				const preprocess: PreprocessorGroup | [] =
+					pkg.default.preprocess || []
+
+				ctx.preprocess = preprocess
+
 				ctx.setRoot(config.root)
 
 				ctx.sourcemap = true
