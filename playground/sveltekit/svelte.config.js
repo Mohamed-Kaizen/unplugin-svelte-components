@@ -1,7 +1,6 @@
 import adapter from "@sveltejs/adapter-auto"
 import preprocess from "svelte-preprocess"
 import Components from "unplugin-svelte-components/vite"
-import Icons from "unplugin-icons/vite"
 import AutoImport from "unplugin-auto-import/vite"
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -20,24 +19,17 @@ const config = {
 					dirs: ["./src/lib"],
 				}),
 				Components({
+					dirs: ["./src/lib"],
 					dts: "./src/components.d.ts",
-					directoryAsNamespace: true,
-					external: [
-						{
-							from: "flowbite-svelte",
-							names: [
-								"GradientMonochromeButton",
-								"Button as FButton",
-							],
-							defaultImport: false,
-						},
-					],
-				}),
-				Icons({
-					compiler: "svelte",
+
 				}),
 			],
 		},
+		// Override http methods in the Todo forms
+		methodOverride: {
+			allowed: ['PATCH', 'DELETE']
+		}
+
 	},
 }
 
