@@ -30,6 +30,7 @@ export default createUnplugin<Options>((options = {}) => {
 		},
 
 		async transform(code: string, id: string) {
+			if (!code) return null
 			if (!shouldTransform(code)) return null
 			const result = await ctx.transform(code, id)
 			ctx.generateDeclaration()
