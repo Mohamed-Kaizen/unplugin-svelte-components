@@ -84,6 +84,23 @@ build({
 
 <br></details>
 
+<details>
+<summary>sveltekit</summary><br>
+
+```ts
+// vite.config.ts
+import Components from 'unplugin-svelte-components/vite'
+
+export default defineConfig({
+  plugins: [
+    Components({ /* options */ }), // before sveltekit plugin
+    sveltekit(),
+  ],
+})
+```
+
+<br></details>
+
 ## Usage
 
 Use components as you would usually do, it will import components on demand, and there is no `import` required anymore!
