@@ -1,7 +1,7 @@
 {
 	"name": "unplugin-svelte-components",
 	"version": "0.1.7",
-	"packageManager": "pnpm@7.1.7",
+	"packageManager": "pnpm@7.13.4",
 	"description": "Components auto importing for svelte",
 	"homepage": "https://github.com/Mohamed-Kaizen/unplugin-svelte-components",
 	"bugs": "https://github.com/Mohamed-Kaizen/unplugin-svelte-components/issues",
@@ -61,7 +61,7 @@
 		"dev:link": "pnpm link ./",
 		"build:fix": "esno scripts/postbuild.ts",
 		"lint": "eslint .",
-		"play:kit": "pnpm -C playground/sveltekit run dev",
+		"play:kit": "pnpm -C playground/kit run dev",
 		"prepublishOnly": "npm run build",
 		"release": "bumpp --commit --push --tag",
 		"test": "vitest",
@@ -71,12 +71,12 @@
 		"@antfu/utils": "^0.5.2",
 		"@rollup/pluginutils": "^4.2.1",
 		"chokidar": "^3.5.3",
-		"fast-glob": "^3.2.11",
-		"local-pkg": "^0.4.1",
-		"magic-string": "^0.26.2",
+		"fast-glob": "^3.2.12",
+		"local-pkg": "^0.4.2",
+		"magic-string": "^0.26.7",
 		"minimatch": "^5.1.0",
-		"resolve": "^1.22.0",
-		"unplugin": "^0.7.0"
+		"resolve": "^1.22.1",
+		"unplugin": "^0.9.6"
 	},
 	"devDependencies": {
 		"@types/minimatch": "^3.0.5",
@@ -89,15 +89,15 @@
 		"eslint-config-prettier": "^8.5.0",
 		"esno": "^0.16.3",
 		"lint-staged": "^13.0.1",
-		"pathe": "^0.3.0",
+		"pathe": "^0.3.9",
 		"prettier": "^2.6.2",
 		"rollup": "^2.75.6",
 		"simple-git-hooks": "^2.8.0",
-		"svelte": "^3.48.0",
-		"tsup": "^6.1.2",
-		"typescript": "^4.7.3",
-		"vite": "^2.9.12",
-		"vitest": "^0.14.2"
+		"svelte": "^3.51.0",
+		"tsup": "^6.2.3",
+		"typescript": "^4.8.4",
+		"vite": "^3.1.7",
+		"vitest": "^0.24.1"
 	},
 	"simple-git-hooks": {
 		"pre-commit": "npx lint-staged"

@@ -9,7 +9,6 @@ declare global {
   const crossfade: typeof import('svelte/transition')['crossfade']
   const derived: typeof import('svelte/store')['derived']
   const draw: typeof import('svelte/transition')['draw']
-  const enhance: typeof import('./lib/form')['enhance']
   const fade: typeof import('svelte/transition')['fade']
   const fly: typeof import('svelte/transition')['fly']
   const get: typeof import('svelte/store')['get']
