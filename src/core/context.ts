@@ -1,3 +1,4 @@
+import { createFilter } from "@rollup/pluginutils"
 import { slash, throttle, toArray } from "@antfu/utils"
 import type fs from "fs"
 import { relative } from "path"
@@ -153,9 +154,18 @@ export class Context {
 	}
 
 	private updateComponentNameMap() {
+		const filter = createFilter(
+			this.options.include || [/\.svelte$/],
+			this.options.exclude || [
+				/[\\/]node_modules[\\/]/,
+				/[\\/]\.git[\\/]/,
+				/[\\/]\.svelte-kit[\\/]/,
+			]
+		)
 		this._componentNameMap = {}
 
 		Array.from(this._componentPaths).forEach((path) => {
+			if (!filter(path)) return
 			const name = pascalCase(getNameFromFilePath(path, this.options))
 
 			if (this._componentNameMap[name] && !this.options.allowOverrides) {

@@ -23,7 +23,7 @@ export async function generateDeclaration(
 			.map(({ from: path, as: name, name: importName }) => {
 				if (!name) return undefined
 				path = getTransformedPath(path, ctx)
-				const related = isAbsolute(path)
+				const related: string = isAbsolute(path)
 					? `./${relative(dirname(filepath), path)}`
 					: path
 

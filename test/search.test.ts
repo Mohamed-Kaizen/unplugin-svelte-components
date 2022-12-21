@@ -16,7 +16,15 @@ function cleanup(data: any) {
 
 describe("search", () => {
 	it("should work", async () => {
-		const ctx = new Context({})
+		const ctx = new Context({
+			exclude: [
+				/[\\/]node_modules[\\/]/,
+				/[\\/]\.git[\\/]/,
+				/[\\/]\.svelte-kit[\\/]/,
+				/\.stories\.svelte$/,
+				/\.story\.svelte$/,
+			],
+		})
 
 		ctx.setRoot(root)
 
@@ -29,6 +37,13 @@ describe("search", () => {
 		const ctx = new Context({
 			directoryAsNamespace: true,
 			globalNamespaces: ["global"],
+			exclude: [
+				/[\\/]node_modules[\\/]/,
+				/[\\/]\.git[\\/]/,
+				/[\\/]\.svelte-kit[\\/]/,
+				/\.stories\.svelte$/,
+				/\.story\.svelte$/,
+			],
 		})
 
 		ctx.setRoot(root)
@@ -43,6 +58,13 @@ describe("search", () => {
 			directoryAsNamespace: true,
 			collapseSamePrefixes: true,
 			globalNamespaces: ["global"],
+			exclude: [
+				/[\\/]node_modules[\\/]/,
+				/[\\/]\.git[\\/]/,
+				/[\\/]\.svelte-kit[\\/]/,
+				/\.stories\.svelte$/,
+				/\.story\.svelte$/,
+			],
 		})
 
 		ctx.setRoot(root)
