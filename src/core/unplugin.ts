@@ -2,6 +2,7 @@ import { createFilter } from "@rollup/pluginutils"
 import chokidar from "chokidar"
 import path from "path"
 import { createUnplugin } from "unplugin"
+import { pathToFileURL } from "url"
 
 import { Context } from "./context"
 import { shouldTransform } from "./utils"
@@ -40,7 +41,10 @@ export default createUnplugin<Options>((options = {}) => {
 			async configResolved(config: ResolvedConfig) {
 				const configFile = path.join(config.root, "./svelte.config.js")
 
-				const pkg = await import(configFile)
+				const pkg =
+					process.platform === "win32"
+						? await import(pathToFileURL(configFile).toString())
+						: await import(configFile)
 
 				const preprocess: PreprocessorGroup | [] =
 					pkg.default.preprocess || []
