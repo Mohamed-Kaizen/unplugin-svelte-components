@@ -199,21 +199,29 @@ export class Context {
 		const external = this.options.external
 
 		if (external.length > 0) {
-			const module = external.filter((cp) =>
-				cp.names.filter((cp_name) => {
-					if (cp_name.includes("as")) {
-						return cp_name.split("as")[1].trim() === name
+			const module = external
+				?.filter((cp) =>
+					cp?.names?.filter((cp_name) => {
+						if (cp_name?.includes("as")) {
+							return cp_name?.split("as")[1].trim() === name
+						}
+						return cp_name === name
+					})
+				)
+				?.at(0)
+			if (!module) return undefined
+			const cp_name = module?.names
+				?.filter((cp_name) => {
+					if (cp_name?.includes("as")) {
+						return cp_name?.split("as")[1].trim() === name
 					}
 					return cp_name === name
 				})
-			)[0]
-			const cp_name = module.names.filter((cp_name) => {
-				if (cp_name.includes("as")) {
-					return cp_name.split("as")[1].trim() === name
-				}
-				return cp_name === name
-			})[0]
-			if (cp_name.includes("as")) {
+				?.at(0)
+
+			if (!cp_name) return undefined
+
+			if (cp_name?.includes("as")) {
 				const [, name, alias] = cp_name.match(/^(.*) as (.*)$/) || []
 
 				return {

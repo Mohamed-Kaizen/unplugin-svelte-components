@@ -56,7 +56,7 @@
 		"*.d.ts"
 	],
 	"scripts": {
-		"build": "tsup && pnpm build:fix",
+		"build": "tsup",
 		"dev": "tsup --watch src",
 		"dev:link": "pnpm link ./",
 		"build:fix": "esno scripts/postbuild.ts",

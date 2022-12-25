@@ -4,6 +4,9 @@
 
 On-demand components auto importing for Svelte.
 
+[Sveltekit Demo](https://stackblitz.com/edit/sveltejs-kit-template-default-bmc4wn)
+[Svelte Vite Demo](https://stackblitz.com/edit/vitejs-vite-19qjgd)
+
 ## Features
 
 - ⚡️ Supports Vite, Webpack, Rollup, esbuild and more, powered by <a href="https://github.com/unjs/unplugin">unplugin</a>.
