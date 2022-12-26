@@ -206,7 +206,7 @@ export class Context {
 							return cp_name?.split("as")[1].trim() === name
 						}
 						return cp_name === name
-					})
+					}).length > 0
 				)
 				?.at(0)
 			if (!module) return undefined

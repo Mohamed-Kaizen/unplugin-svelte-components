@@ -64,10 +64,10 @@ export function getTransformedPath(path: string, ctx: Context): string {
 export function stringifyImport(info: ImportInfo | string) {
 	if (typeof info === "string") return `import '${info}'`
 	if (info.name)
-		return `import { ${info.name} as ${info.as} } from '${info.from}'`
+		return `import { ${info.name} as ${info.as} } from ${JSON.stringify(info.from)}`
 	else if (!info.defaultImport)
-		return `import { ${info.as} } from '${info.from}'`
-	else return `import ${info.as} from '${info.from}'`
+		return `import { ${info.as} } from ${JSON.stringify(info.from)}`
+	else return `import ${info.as} from ${JSON.stringify(info.from)}`
 }
 
 export function stringifyComponentImport(
