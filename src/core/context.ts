@@ -196,45 +196,27 @@ export class Context {
 			!excludePaths.includes(info.from.slice(1))
 		)
 			return info
-		const external = this.options.external
 
-		if (external.length > 0) {
-			const module = external
-				?.filter((cp) =>
-					cp?.names?.filter((cp_name) => {
-						if (cp_name?.includes("as")) {
-							return cp_name?.split("as")[1].trim() === name
-						}
-						return cp_name === name
-					}).length > 0
-				)
-				?.at(0)
-			if (!module) return undefined
-			const cp_name = module?.names
-				?.filter((cp_name) => {
-					if (cp_name?.includes("as")) {
-						return cp_name?.split("as")[1].trim() === name
+		//Find the external module
+		for (const module of this.options.external) {
+			for (const externalName of module.names) {
+				//Parse the name
+				const parsed = /^([^\s]+)\s+as\s+([^\s]+)$/.exec(externalName)
+
+				if (parsed !== null && parsed.length === 3 && parsed[2] === name) {
+					return {
+						as: parsed[2],
+						from: module.from,
+						name: parsed[1],
+						defaultImport: false,
 					}
-					return cp_name === name
-				})
-				?.at(0)
-
-			if (!cp_name) return undefined
-
-			if (cp_name?.includes("as")) {
-				const [, name, alias] = cp_name.match(/^(.*) as (.*)$/) || []
-
-				return {
-					as: alias,
-					from: module.from,
-					name,
-					defaultImport: false,
+				} else if (externalName === name) {
+					return {
+						as: externalName,
+						from: module.from,
+						defaultImport: module.defaultImport,
+					}
 				}
-			}
-			return {
-				as: cp_name,
-				from: module.from,
-				defaultImport: module.defaultImport,
 			}
 		}
 
