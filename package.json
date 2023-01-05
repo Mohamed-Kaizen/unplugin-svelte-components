@@ -1,6 +1,6 @@
 {
 	"name": "unplugin-svelte-components",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"packageManager": "pnpm@7.13.4",
 	"description": "Components auto importing for svelte",
 	"homepage": "https://github.com/Mohamed-Kaizen/unplugin-svelte-components",
