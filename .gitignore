@@ -343,4 +343,6 @@ packages/contributing.md
 index.json
 indexes.json
 /*.d.ts
+/*.js
+/*.mjs
 .vscode

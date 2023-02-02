@@ -1,8 +1,15 @@
 import type { Options } from "tsup"
 
 export default <Options>{
-	entryPoints: ["src/*.ts"],
-	clean: true,
-	format: ["cjs", "esm"],
+	entry: ["src/*.ts"],
+
+	clean: false,
+
+	outDir: "./",
+
+	format: ["esm"],
+
 	dts: true,
+
+	skipNodeModulesBundle: true,
 }

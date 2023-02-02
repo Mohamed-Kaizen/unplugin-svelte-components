@@ -21,45 +21,33 @@
 		"svelte",
 		"svelte-auto-import"
 	],
-	"main": "dist/index.js",
-	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
+	"type": "module",
 	"exports": {
 		".": {
-			"require": "./dist/index.js",
-			"import": "./dist/index.mjs"
+			"import": "./index.js"
 		},
 		"./vite": {
-			"require": "./dist/vite.js",
-			"import": "./dist/vite.mjs"
+			"import": "./vite.js"
 		},
 		"./webpack": {
-			"require": "./dist/webpack.js",
-			"import": "./dist/webpack.mjs"
+			"import": "./webpack.js"
 		},
 		"./rollup": {
-			"require": "./dist/rollup.js",
-			"import": "./dist/rollup.mjs"
+			"import": "./rollup.js"
 		},
 		"./esbuild": {
-			"require": "./dist/esbuild.js",
-			"import": "./dist/esbuild.mjs"
+			"import": "./esbuild.js"
 		},
 		"./types": {
-			"require": "./dist/types.js",
-			"import": "./dist/types.mjs"
+			"import": "./types.js"
 		},
 		"./*": "./*"
 	},
-	"files": [
-		"dist",
-		"*.d.ts"
-	],
 	"scripts": {
-		"build": "tsup",
-		"dev": "tsup --watch src",
+		"build": "pnpm run clean && tsup",
+		"dev": "pnpm run clean && tsup --watch src",
 		"dev:link": "pnpm link ./",
-		"build:fix": "esno scripts/postbuild.ts",
+		"clean": "esno scripts/clean.ts",
 		"lint": "eslint .",
 		"play:kit": "pnpm -C playground/kit run dev",
 		"prepublishOnly": "npm run build",
@@ -94,7 +82,7 @@
 		"rollup": "^2.75.6",
 		"simple-git-hooks": "^2.8.0",
 		"svelte": "^3.51.0",
-		"tsup": "^6.2.3",
+		"tsup": "^6.5.0",
 		"typescript": "^4.8.4",
 		"vite": "^3.1.7",
 		"vitest": "^0.24.1"
@@ -106,6 +94,9 @@
 		"*.{js,ts,tsx}": [
 			"eslint --fix"
 		]
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"engines": {
 		"node": ">=14"
