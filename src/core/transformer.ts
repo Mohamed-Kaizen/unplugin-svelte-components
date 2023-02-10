@@ -103,7 +103,7 @@ async function transformComponent(
 			return item
 		})
 
-		s.overwrite(index, index + 1, `\n ${imports.join("\n")} \n`)
+		s.appendLeft(index, `\n ${imports.join("\n")} \n`)
 	} else {
 		const script = `<script>${imports.join("\n")}</script>`
 
