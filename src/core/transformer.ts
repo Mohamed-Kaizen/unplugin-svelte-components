@@ -97,7 +97,7 @@ async function transformComponent(
 
 		imports = imports.filter((item) => {
 			const exists =
-				oc.includes(item) || oc.includes(item.replace(/'/g, '"'))
+                oc.includes(item) || oc.includes(item.replace(/'/g, '"')) || oc.includes(item.replace(/"/g, "'"));
 			if (exists) return
 
 			return item
