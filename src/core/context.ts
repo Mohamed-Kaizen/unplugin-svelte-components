@@ -48,6 +48,8 @@ export class Context {
 			this.generateDeclaration.bind(this)
 		)
 		this.transformer = transformer(this)
+		if (rawOptions.preprocess)
+			this.preprocess = rawOptions.preprocess
 	}
 
 	setRoot(root: string) {
