@@ -1,6 +1,8 @@
 import type { Awaitable } from "@antfu/utils"
 import type { FilterPattern } from "@rollup/pluginutils"
 import type { TransformResult } from "unplugin"
+import { PreprocessorGroup } from "svelte/types/compiler/preprocess"
+
 
 export interface ImportInfo {
 	as?: string
@@ -98,6 +100,11 @@ export interface Options {
 	 * @default true
 	 */
 	dts?: boolean | string
+
+	/**
+	 * Accept a svelte pre-processor
+	 */
+	preprocess?: PreprocessorGroup
 
 	/**
 	 * Do not emit warning on component overriding
