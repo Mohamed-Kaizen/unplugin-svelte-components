@@ -20,6 +20,7 @@ export default createUnplugin<Options>((options = {}) => {
 			/[\\/]\.svelte-kit[\\/]/,
 		]
 	)
+
 	const ctx: Context = new Context(options)
 
 	return {

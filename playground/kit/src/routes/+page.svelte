@@ -7,6 +7,7 @@
 </script>
 
 <svelte:head>
+	<!-- svelte-ignore missing-declaration -->
 	<title>{FO} | Home</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
@@ -26,11 +27,12 @@
 	<h2>
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
-
+	<!-- svelte-ignore missing-declaration -->
 	<Counter />
+
+	<!-- svelte-ignore missing-declaration -->
 	<ASwitch
-		checked={enabled}
-		on:change={(e) => (enabled = e.detail)}
+		bind:checked={enabled}
 		class={enabled ? "switch switch-enabled" : "switch switch-disabled"}
 	>
 		<span class="sr-only">Enable notifications</span>
@@ -40,9 +42,9 @@
 			class:toggle-off={!enabled}
 		/>
 	</ASwitch>
+	<!-- svelte-ignore missing-declaration -->
 	<Switch
-		checked={enabled}
-		on:change={(e) => (enabled = e.detail)}
+		bind:checked={enabled}
 		class={enabled ? "switch switch-enabled" : "switch switch-disabled"}
 	>
 		<span class="sr-only">Enable notifications</span>

@@ -14,13 +14,6 @@ const config: UserConfig = {
 		Components({
 			dirs: ["./src/components"],
 			dts: "./src/components.d.ts",
-			exclude: [
-				/[\\/]node_modules[\\/]/,
-				/[\\/]\.git[\\/]/,
-				/[\\/]\.svelte-kit[\\/]/,
-				/\.stories\.svelte$/,
-				/\.story\.svelte$/,
-			],
 			external: [
 				{
 					from: "@rgossiaux/svelte-headlessui", // import from third party

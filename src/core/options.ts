@@ -30,6 +30,8 @@ export const defaultOptions: Omit<
 	allowOverrides: false,
 
 	collapseSamePrefixes: false,
+
+	preprocess: null,
 }
 
 function normalizeResolvers(

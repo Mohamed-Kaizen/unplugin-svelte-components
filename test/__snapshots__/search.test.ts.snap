@@ -1,7 +1,12 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`search > should with namespace & collapse 1`] = `
 [
+  {
+    "as": "Ab",
+    "defaultImport": true,
+    "from": "src/components/+ab.svelte",
+  },
   {
     "as": "NestCounter",
     "defaultImport": true,
@@ -18,6 +23,11 @@ exports[`search > should with namespace & collapse 1`] = `
 exports[`search > should with namespace 1`] = `
 [
   {
+    "as": "Ab",
+    "defaultImport": true,
+    "from": "src/components/+ab.svelte",
+  },
+  {
     "as": "NestCounter",
     "defaultImport": true,
     "from": "src/components/nest/Counter.svelte",
@@ -32,6 +42,11 @@ exports[`search > should with namespace 1`] = `
 
 exports[`search > should work 1`] = `
 [
+  {
+    "as": "Ab",
+    "defaultImport": true,
+    "from": "src/components/+ab.svelte",
+  },
   {
     "as": "Counter",
     "defaultImport": true,

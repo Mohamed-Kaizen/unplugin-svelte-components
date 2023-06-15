@@ -48,8 +48,7 @@ export class Context {
 			this.generateDeclaration.bind(this)
 		)
 		this.transformer = transformer(this)
-		if (rawOptions.preprocess)
-			this.preprocess = rawOptions.preprocess
+		if (rawOptions.preprocess) this.preprocess = rawOptions.preprocess
 	}
 
 	setRoot(root: string) {
@@ -162,6 +161,11 @@ export class Context {
 				/[\\/]node_modules[\\/]/,
 				/[\\/]\.git[\\/]/,
 				/[\\/]\.svelte-kit[\\/]/,
+				/\.stories\.svelte$/,
+				/\.story\.svelte$/,
+				/\+layout\.svelte$/,
+				/\+error\.svelte$/,
+				/\+page\.svelte$/,
 			]
 		)
 		this._componentNameMap = {}
@@ -205,7 +209,11 @@ export class Context {
 				//Parse the name
 				const parsed = /^([^\s]+)\s+as\s+([^\s]+)$/.exec(externalName)
 
-				if (parsed !== null && parsed.length === 3 && parsed[2] === name) {
+				if (
+					parsed !== null &&
+					parsed.length === 3 &&
+					parsed[2] === name
+				) {
 					return {
 						as: parsed[2],
 						from: module.from,

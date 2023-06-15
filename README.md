@@ -203,6 +203,9 @@ Components({
   // Allow for components to override other components with the same name
   allowOverrides: false,
 
+  // Accept a svelte pre-processor (e.g. svelte-preprocess)
+  preprocess:  null,
+
   // filters for transforming targets
   include: [/\.svelte$/, /\.svelte\?svelte/],
   exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.svelte-kit[\\/]/,],

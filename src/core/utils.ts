@@ -1,5 +1,5 @@
 import { slash } from "@antfu/utils"
-import minimatch from "minimatch"
+import { minimatch } from "minimatch"
 import { parse } from "path"
 
 import { DISABLE_COMMENT } from "./constants"
@@ -64,7 +64,9 @@ export function getTransformedPath(path: string, ctx: Context): string {
 export function stringifyImport(info: ImportInfo | string) {
 	if (typeof info === "string") return `import '${info}'`
 	if (info.name)
-		return `import { ${info.name} as ${info.as} } from ${JSON.stringify(info.from)}`
+		return `import { ${info.name} as ${info.as} } from ${JSON.stringify(
+			info.from
+		)}`
 	else if (!info.defaultImport)
 		return `import { ${info.as} } from ${JSON.stringify(info.from)}`
 	else return `import ${info.as} from ${JSON.stringify(info.from)}`
@@ -112,7 +114,7 @@ export function getNameFromFilePath(
 	}
 
 	let folders = strippedPath.slice(1).split("/").filter(Boolean)
-	let filename = parsedFilePath.name
+	let filename = parsedFilePath.name.replace(/[^a-zA-Z0-9]/g, "")
 
 	// set parent directory as filename if it is index
 	if (filename === "index" && !directoryAsNamespace) {
@@ -124,6 +126,8 @@ export function getNameFromFilePath(
 		// remove namesspaces from folder names
 		if (globalNamespaces.some((name: string) => folders.includes(name)))
 			folders = folders.filter((f) => !globalNamespaces.includes(f))
+
+		folders = folders.map((f) => f.replace(/[^a-zA-Z0-9]/g, ""))
 
 		if (filename.toLowerCase() === "index") filename = ""
 
