@@ -56,7 +56,6 @@
 		"install_hook": "pnpx simple-git-hooks"
 	},
 	"dependencies": {
-		"@antfu/utils": "^0.5.2",
 		"@rollup/pluginutils": "^5.0.2",
 		"chokidar": "^3.5.3",
 		"fast-glob": "^3.2.12",

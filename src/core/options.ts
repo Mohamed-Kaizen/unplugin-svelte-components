@@ -1,4 +1,3 @@
-import { slash, toArray } from "@antfu/utils"
 import { join, resolve } from "path"
 import { isPackageExists } from "local-pkg"
 
@@ -8,6 +7,7 @@ import type {
 	ComponentResolver,
 	ComponentResolverObject,
 } from "../types"
+import { slash, toArray } from "./utils"
 
 export const defaultOptions: Omit<
 	Required<Options>,

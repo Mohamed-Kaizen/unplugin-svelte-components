@@ -1,8 +1,12 @@
-import { notNullish, slash } from "@antfu/utils"
 import { promises as fs } from "fs"
 import { dirname, isAbsolute, relative } from "path"
 
-import { getTransformedPath, resolveExternalImports } from "./utils"
+import {
+	getTransformedPath,
+	notNullish,
+	resolveExternalImports,
+	slash,
+} from "./utils"
 
 import type { Context } from "./context"
 

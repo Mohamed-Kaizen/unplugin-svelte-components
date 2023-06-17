@@ -1,5 +1,4 @@
 import { createFilter } from "@rollup/pluginutils"
-import { slash, throttle, toArray } from "@antfu/utils"
 import type fs from "fs"
 import { relative } from "path"
 
@@ -11,6 +10,9 @@ import {
 	parseId,
 	pascalCase,
 	resolveAlias,
+	slash,
+	throttle,
+	toArray,
 } from "./utils"
 import { resolveOptions } from "./options"
 import transformer from "./transformer"
@@ -43,9 +45,9 @@ export class Context {
 	constructor(private rawOptions: Options) {
 		this.options = resolveOptions(rawOptions, this.root)
 		this.generateDeclaration = throttle(
-			500,
-			false,
-			this.generateDeclaration.bind(this)
+			this.generateDeclaration.bind(this),
+			0.5,
+			false
 		)
 		this.transformer = transformer(this)
 		if (rawOptions.preprocess) this.preprocess = rawOptions.preprocess

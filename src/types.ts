@@ -1,7 +1,42 @@
-import type { Awaitable } from "@antfu/utils"
 import type { FilterPattern } from "@rollup/pluginutils"
 import type { TransformResult } from "unplugin"
 import { PreprocessorGroup } from "svelte/types/compiler/preprocess"
+
+type Awaitable<T> = T | PromiseLike<T>
+
+/**
+ * Null or whatever
+ */
+export type Nullable<T> = T | null | undefined
+
+/**
+ * Array, or not yet
+ */
+export type Arrayable<T> = T | Array<T>
+
+export type FunctionArgs<Args extends any[] = any[], Return = void> = (
+	...args: Args
+) => Return
+
+export interface FunctionWrapperOptions<
+	Args extends any[] = any[],
+	This = any
+> {
+	fn: FunctionArgs<Args, This>
+	args: Args
+	this_arg: This
+}
+
+export type AnyFn = (...args: any[]) => any
+
+export type EventFilter<
+	Args extends any[] = any[],
+	This = any,
+	Invoke extends AnyFn = AnyFn
+> = (
+	invoke: Invoke,
+	options: FunctionWrapperOptions<Args, This>
+) => ReturnType<Invoke> | Promise<ReturnType<Invoke>>
 
 export interface ImportInfo {
 	as?: string
