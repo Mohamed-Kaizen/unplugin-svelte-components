@@ -30,7 +30,19 @@ export default function transformer(ctx: Context): Transformer {
 function walkAST(ast: Ast) {
 	const components = new Set()
 
+	const importDeclarations: string[] = []
+
 	const body = ast.instance?.content?.body
+
+	if (body) {
+		for (const _body of body) {
+			if (_body.type === "ImportDeclaration") {
+				const importName = _body?.specifiers[0]?.local?.name
+
+				importDeclarations.push(importName)
+			}
+		}
+	}
 
 	if (ast.html && ast.html.children) {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -42,17 +54,8 @@ function walkAST(ast: Ast) {
 					node.type == "InlineComponent" &&
 					!/^svelte:/.test(node.name)
 				) {
-					if (body) {
-						for (const _body of body) {
-							if (_body.type === "ImportDeclaration") {
-								const importName =
-									_body?.specifiers[0]?.local?.name
-
-								components.delete(node.name)
-								if (node.name !== importName)
-									components.add(node.name)
-							}
-						}
+					if (!importDeclarations.includes(node.name)) {
+						components.add(node.name)
 					}
 				}
 			},
