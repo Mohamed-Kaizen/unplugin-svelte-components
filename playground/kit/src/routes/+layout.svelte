@@ -1,8 +1,10 @@
 <script>
 	import "./styles.css"
+	import Header from "../components/nest/Header.svelte"
 </script>
 
 <div class="app">
+	<!-- svelte-ignore missing-declaration -->
 	<Header />
 
 	<main>

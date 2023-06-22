@@ -1,7 +1,7 @@
 <script>
 	import welcome from "$lib/images/svelte-welcome.webp"
 	import welcome_fallback from "$lib/images/svelte-welcome.png"
-
+	import Counter from "../components/nest/Counter.svelte"
 	let enabled = false
 	console.log(useHi())
 </script>
