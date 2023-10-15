@@ -3,6 +3,8 @@ import type fs from "fs"
 import { relative } from "path"
 
 import { generateDeclaration } from "./declaration"
+
+import { generateESLintConfigs } from "./eslintrc"
 import { searchComponents } from "./glob"
 import {
 	getNameFromFilePath,
@@ -46,6 +48,11 @@ export class Context {
 		this.options = resolveOptions(rawOptions, this.root)
 		this.generateDeclaration = throttle(
 			this.generateDeclaration.bind(this),
+			0.5,
+			false
+		)
+		this.generateESLintConfigs = throttle(
+			this.generateESLintConfigs.bind(this),
 			0.5,
 			false
 		)
@@ -131,6 +138,7 @@ export class Context {
 
 	onUpdate(path: string) {
 		this.generateDeclaration()
+		this.generateESLintConfigs()
 
 		if (!this._server) return
 
@@ -265,6 +273,11 @@ export class Context {
 	generateDeclaration() {
 		if (!this.options.dts) return
 		generateDeclaration(this, this.options.dts, !this._server)
+	}
+
+	generateESLintConfigs() {
+		if (!this.options.eslintrc || !this.options.eslintrc.enabled) return
+		generateESLintConfigs(this)
 	}
 
 	get componentNameMap() {

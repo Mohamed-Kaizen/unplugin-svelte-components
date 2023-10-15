@@ -1,0 +1,9 @@
+{
+    "globals": {
+        "Ab": true,
+        "Counter": true,
+        "Header": true,
+        "ASwitch": true,
+        "Switch": true
+    }
+}

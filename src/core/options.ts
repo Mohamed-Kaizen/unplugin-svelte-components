@@ -32,6 +32,12 @@ export const defaultOptions: Omit<
 	collapseSamePrefixes: false,
 
 	preprocess: null,
+
+	eslintrc: {
+		enabled: true,
+		filepath: "./.eslintrc-components.json",
+		globalsPropValue: true,
+	},
 }
 
 function normalizeResolvers(

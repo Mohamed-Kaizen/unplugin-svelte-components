@@ -36,6 +36,7 @@ export default createUnplugin<Options>((options = {}) => {
 			if (!shouldTransform(code)) return null
 			const result = await ctx.transform(code, id)
 			ctx.generateDeclaration()
+			ctx.generateESLintConfigs()
 			return result
 		},
 		vite: {
@@ -59,6 +60,9 @@ export default createUnplugin<Options>((options = {}) => {
 				if (options.dts) {
 					ctx.searchGlob()
 					ctx.generateDeclaration()
+				}
+				if (options.eslintrc?.enabled) {
+					ctx.generateESLintConfigs()
 				}
 
 				if (config.build.watch && config.command === "build")

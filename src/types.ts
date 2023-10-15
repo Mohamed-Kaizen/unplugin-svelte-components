@@ -59,6 +59,30 @@ export interface PublicPluginAPI {
 	stringifyImport: (info: ImportInfo) => string
 }
 
+export type ESLintGlobalsPropValue =
+	| boolean
+	| "readonly"
+	| "readable"
+	| "writable"
+	| "writeable"
+
+export interface ESLintrc {
+	/**
+	 * @default true
+	 */
+	enabled?: boolean
+	/**
+	 * Filepath to save the generated eslint config
+	 *
+	 * @default './.eslintrc-components.json'
+	 */
+	filepath?: string
+	/**
+	 * @default true
+	 */
+	globalsPropValue?: ESLintGlobalsPropValue
+}
+
 /**
  * Plugin options.
  */
@@ -151,6 +175,11 @@ export interface Options {
 	 * Import Third-Party Components
 	 **/
 	external?: ExternalImport[]
+
+	/**
+	 * Generate corresponding .eslintrc-auto-import.json file.
+	 */
+	eslintrc?: ESLintrc
 }
 
 export interface ExternalImport {
