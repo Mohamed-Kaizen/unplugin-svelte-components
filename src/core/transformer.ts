@@ -107,8 +107,8 @@ async function transformComponent(
 
 	if (ast.instance) {
 		const start = ast.instance.start
-
-		const index = start + (code.slice(start).indexOf(">") + 2)
+        
+		const index = code.indexOf(">", start) + 1
 
 		const oc = s.toString()
 
@@ -120,7 +120,7 @@ async function transformComponent(
 			return item
 		})
 
-		s.overwrite(index, index + 1, `\n ${imports.join("\n")} \n`)
+		s.appendRight(index, `\n${imports.join("\n")}\n`)
 	} else {
 		const script = `<script>${imports.join("\n")}</script>`
 
